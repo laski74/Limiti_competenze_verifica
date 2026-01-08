@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preparazione Verifica Limiti - Bergamini</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- MathJax Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .math-display {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 10px 0;
+        }
+        .tab-btn.active {
+            border-bottom: 3px solid #2563eb;
+            color: #2563eb;
+            font-weight: 600;
+        }
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="max-w-5xl mx-auto px-4 py-4">
+            <h1 class="text-2xl font-bold text-slate-900">Preparazione Verifica: Limiti e Continuità</h1>
+            <p class="text-sm text-slate-500">Capitolo 17 - Simulazione interattiva</p>
+        </div>
+        
+        <!-- Navigation Tabs -->
+        <div class="max-w-5xl mx-auto px-4 mt-2 flex space-x-6 border-b border-slate-200 overflow-x-auto">
+            <button onclick="switchTab('fondamentali')" id="btn-fondamentali" class="tab-btn active pb-3 px-2 whitespace-nowrap transition-colors hover:text-blue-600">
+                Fondamentali (18 Ex)
+            </button>
+            <button onclick="switchTab('provaA')" id="btn-provaA" class="tab-btn pb-3 px-2 whitespace-nowrap transition-colors hover:text-blue-600 text-slate-500">
+                Competenze: Prova A
+            </button>
+            <button onclick="switchTab('provaB')" id="btn-provaB" class="tab-btn pb-3 px-2 whitespace-nowrap transition-colors hover:text-blue-600 text-slate-500">
+                Competenze: Prova B
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 py-8 pb-20">
+
+        <!-- TAB: FONDAMENTALI -->
+        <div id="fondamentali" class="tab-content block fade-in">
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6 rounded-r">
+                <p class="text-sm text-blue-800 font-medium">
+                    <span class="font-bold">Esercizi Fondamentali:</span> Serie completa di 18 esercizi per il ripasso rapido (Modulo "Fai il punto").
+                </p>
+            </div>
+
+            <!-- Gruppo 1: Operazioni sui Limiti -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden mb-6 border border-slate-200">
+                <div class="bg-blue-600 px-6 py-3 flex justify-between items-center">
+                    <h3 class="text-white font-bold text-lg">1. Calcolo Immediato e Concetti</h3>
+                    <span class="text-blue-100 text-sm">Ex 1-4</span>
+                </div>
+                <div class="p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-3 bg-slate-50 rounded border text-center">
+                            <span class="font-bold text-blue-600 block mb-2">Ex. 1</span>
+                            $$ \lim_{x\to 4} (2\sqrt{x} + x) $$
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded border text-center">
+                            <span class="font-bold text-blue-600 block mb-2">Ex. 2</span>
+                            $$ \lim_{x\to 0^+} (2x+3)\ln x $$
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded border text-center">
+                            <span class="font-bold text-blue-600 block mb-2">Ex. 3</span>
+                            $$ \lim_{x\to -\infty} -\frac{3}{x^2} $$
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded border">
+                            <span class="font-bold text-blue-600 block mb-2">Ex. 4 (Quiz)</span>
+                            <p class="text-sm mb-2">Quale tra questi è una forma indeterminata?</p>
+                            <ul class="text-sm space-y-1">
+                                <li>A) $\lim_{x\to 0} x \cdot 2^x$</li>
+                                <li>B) $\lim_{x\to 0} \frac{x}{2^x}$</li>
+                                <li>C) $\lim_{x\to +\infty} \frac{x}{2^x}$</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button onclick="toggleSolution('sol-f-1')" class="mt-4 text-sm font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1">
+                        Mostra Svolgimenti <span class="text-xs">▼</span>
+                    </button>
+                    <div id="sol-f-1" class="hidden mt-4 pt-4 border-t border-slate-100 bg-slate-50 p-4 rounded text-sm">
+                        <ul class="space-y-3">
+                            <li><strong>Ex 1:</strong> Sostituzione diretta. $2\sqrt{4} + 4 = 2(2) + 4 = 8$.</li>
+                            <li><strong>Ex 2:</strong> Algebra dei limiti. $(2(0)+3) \cdot (-\infty) = 3 \cdot (-\infty) = -\infty$.</li>
+                            <li><strong>Ex 3:</strong> Costante diviso infinito tende a zero. $-\frac{3}{+\infty} = 0$.</li>
+                            <li><strong>Ex 4:</strong> 
+                                <br>A) $0 \cdot 1 = 0$ (Determinato).
+                                <br>B) $0 / 1 = 0$ (Determinato).
+                                <br>C) $\infty / \infty$ (<strong>Indeterminato</strong>). Anche se sappiamo che l'esponenziale vince (quindi fa 0), la <em>forma</em> iniziale è indeterminata.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gruppo 2: Forme Indeterminate -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden mb-6 border border-slate-200">
+                <div class="bg-blue-600 px-6 py-3 flex justify-between items-center">
+                    <h3 class="text-white font-bold text-lg">2. Forme Indeterminate Algebriche</h3>
+                    <span class="text-blue-100 text-sm">Ex 5-8</span>
+                </div>
+                <div class="p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-3 bg-slate-50 rounded border">
+                            <span class="font-bold text-blue-600 mr-2">Ex. 5</span> $\lim_{x\to -\infty} (-4x^3 + x^2 + x)$
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded border">
+                            <span class="font-bold text-blue-600 mr-2">Ex. 6</span> $\lim_{x\to +\infty} \frac{-x^4 + 2x}{3x^2 - 1}$
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded border">
+                            <span class="font-bold text-blue-600 mr-2">Ex. 7</span> $\lim_{x\to -\infty} \frac{-6x^2 + 2}{2x^2 - 5x}$
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded border">
+                            <span class="font-bold text-blue-600 mr-2">Ex. 8</span> $\lim_{x\to 3} \frac{x^2 - 9}{x^2 - 2x - 3}$
+                        </div>
+                    </div>
+                    <button onclick="toggleSolution('sol-f-2')" class="mt-4 text-sm font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1">
+                        Mostra Svolgimenti <span class="text-xs">▼</span>
+                    </button>
+                    <div id="sol-f-2" class="hidden mt-4 pt-4 border-t border-slate-100 bg-slate-50 p-4 rounded text-sm">
+                        <div class="space-y-4">
+                            <div>
+                                <strong class="text-blue-700">Ex 5:</strong> Raccogliamo la potenza massima ($x^3$).
+                                <br> $\lim_{x\to -\infty} x^3(-4 + \dots) = (-\infty)^3 \cdot (-4) = (-\infty) \cdot (-4) = +\infty$.
+                            </div>
+                            <div>
+                                <strong class="text-blue-700">Ex 6:</strong> Grado Numeratore (4) > Grado Denominatore (2). Vince il numeratore.
+                                <br> $\lim \frac{-x^4}{3x^2} = \lim \frac{-x^2}{3} = -\infty$.
+                            </div>
+                            <div>
+                                <strong class="text-blue-700">Ex 7:</strong> Grado uguale (2). Rapporto dei coefficienti di grado massimo.
+                                <br> $\frac{-6}{2} = -3$.
+                            </div>
+                            <div>
+                                <strong class="text-blue-700">Ex 8:</strong> Forma $0/0$. Scomponiamo.
+                                <br> Num: $(x-3)(x+3)$.
+                                <br> Den: Trinomio speciale (somma -2, prodotto -3) $\to (x-3)(x+1)$.
+                                <br> Limite: $\lim_{x\to 3} \frac{(x-3)(x+3)}{(x-3)(x+1)} = \frac{3+3}{3+1} = \frac{6}{4} = \frac{3}{2}$.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gruppo 3: Limiti Particolari -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden mb-6 border border-slate-200">
+                <div class="bg-blue-600 px-6 py-3 flex justify-between items-center">
+                    <h3 class="text-white font-bold text-lg">3. Semplificazioni e "Trick"</h3>
+                    <span class="text-blue-100 text-sm">Ex 9-10</span>
+                </div>
+                <div class="p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-3 bg-slate-50 rounded border text-center">
+                            <span class="font-bold text-blue-600 block mb-2">Ex. 9</span>
+                            $$ \lim_{x\to 0} (1-\cos^2 x)\cdot\frac{1}{3 \sin x} $$
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded border text-center">
+                            <span class="font-bold text-blue-600 block mb-2">Ex. 10</span>
+                            $$ \lim_{x\to 0^{+}} x^{\frac{5}{\ln x}} $$
+                        </div>
+                    </div>
+                    <button onclick="toggleSolution('sol-f-extra')" class="mt-4 text-sm font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1">
+                        Mostra Svolgimenti <span class="text-xs">▼</span>
+                    </button>
+                    <div id="sol-f-extra" class="hidden mt-4 pt-4 border-t border-slate-100 bg-slate-50 p-4 rounded text-sm">
+                        <div class="space-y-4">
+                            <div>
+                                <strong class="text-blue-700">Ex 9:</strong> Usiamo l'identità fondamentale $\sin^2 x + \cos^2 x = 1 \implies 1-\cos^2 x = \sin^2 x$.
+                                <br> Il limite diventa: $\lim_{x\to 0} \sin^2 x \cdot \frac{1}{3 \sin x} = \lim_{x\to 0} \frac{\sin x}{3} = 0$.
+                            </div>
+                            <div>
+                                <strong class="text-blue-700">Ex 10:</strong> Usiamo la proprietà $a^b = e^{b \ln a}$.
+                                <br> $x^{\frac{5}{\ln x}} = e^{\frac{5}{\ln x} \cdot \ln x}$. Le funzioni $\ln x$ si semplificano.
+                                <br> Risultato: $e^5$.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gruppo 4: Limiti Notevoli -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden mb-6 border border-slate-200">
+                <div class="bg-blue-600 px-6 py-3 flex justify-between items-center">
+                    <h3 class="text-white font-bold text-lg">4. Limiti Notevoli Classici</h3>
+                    <span class="text-blue-100 text-sm">Ex 11-13</span>
+                </div>
+                <div class="p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <span class="font-bold text-blue-600 block mb-1">Ex. 11</span>
+                            <div class="p-2 bg-slate-50 rounded border mb-2">$$ \lim_{x\to 0} \frac{\sin 4x}{5x} $$</div>
+                        </div>
+                        <div>
+                            <span class="font-bold text-blue-600 block mb-1">Ex. 12</span>
+                            <div class="p-2 bg-slate-50 rounded border mb-2">$$ \lim_{x\to 0} \frac{\ln(1+5x)}{x} $$</div>
+                        </div>
+                        <div class="md:col-span-2">
+                            <span class="font-bold text-blue-600 block mb-1">Ex. 13</span>
+                            <div class="p-2 bg-slate-50 rounded border mb-2">$$ \lim_{x\to 0} \frac{4x^2}{1-\cos x} $$</div>
+                        </div>
+                    </div>
+                    <button onclick="toggleSolution('sol-f-3')" class="mt-4 text-sm font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1">
+                        Mostra Svolgimenti <span class="text-xs">▼</span>
+                    </button>
+                    <div id="sol-f-3" class="hidden mt-4 pt-4 border-t border-slate-100 bg-slate-50 p-4 rounded text-sm">
+                        <div class="space-y-4">
+                            <div>
+                                <strong class="text-blue-700">Ex 11:</strong> Usiamo $\lim_{t\to 0} \frac{\sin t}{t} = 1$.
+                                <br> $\lim_{x\to 0} \frac{\sin 4x}{4x} \cdot \frac{4}{5} = 1 \cdot \frac{4}{5} = \frac{4}{5}$.
+                            </div>
+                            <div>
+                                <strong class="text-blue-700">Ex 12:</strong> Usiamo $\lim_{t\to 0} \frac{\ln(1+t)}{t} = 1$. Poniamo $t=5x$.
+                                <br> Moltiplichiamo e dividiamo per 5: $\lim_{x\to 0} 5 \cdot \frac{\ln(1+5x)}{5x} = 5 \cdot 1 = 5$.
+                            </div>
+                            <div>
+                                <strong class="text-blue-700">Ex 13:</strong> Usiamo $\lim_{x\to 0} \frac{1-\cos x}{x^2} = \frac{1}{2}$.
+                                <br> Il nostro limite è il reciproco moltiplicato per 4: $4 \cdot \lim_{x\to 0} \frac{x^2}{1-\cos x} = 4 \cdot 2 = 8$.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gruppo 5: Continuità e Asintoti -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden mb-6 border border-slate-200">
+                <div class="bg-blue-600 px-6 py-3 flex justify-between items-center">
+                    <h3 class="text-white font-bold text-lg">5. Continuità e Discontinuità</h3>
+                    <span class="text-blue-100 text-sm">Ex 14-18</span>
+                </div>
+                <div class="p-6">
+                    <p class="mb-2 text-sm text-slate-500 font-bold uppercase tracking-wide">Continuità Parametrica</p>
+                    <p class="mb-2"><span class="font-bold text-blue-600">Ex. 14</span> Trova $b$ per rendere continua in $\mathbb{R}$:</p>
+                    <div class="p-3 bg-slate-50 rounded border mb-4">
+                        $$ f(x) = \begin{cases} e^x & \text{se } x \ge 0 \\ x^2 - b & \text{se } x < 0 \end{cases} $$
+                    </div>
+
+                    <p class="mb-2 text-sm text-slate-500 font-bold uppercase tracking-wide border-t pt-4 mt-4">Classificazione Discontinuità</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                         <div class="p-3 bg-slate-50 rounded border">
+                            <span class="font-bold text-blue-600 block mb-1">Ex. 15</span>
+                            $y = \frac{x^2-1}{x-1}$. Classifica $x=1$.
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded border">
+                            <span class="font-bold text-blue-600 block mb-1">Ex. 16</span>
+                            $y = \frac{1}{x-2}$. Classifica $x=2$.
+                        </div>
+                    </div>
+                    
+                    <p class="mb-2 text-sm text-slate-500 font-bold uppercase tracking-wide border-t pt-4 mt-4">Asintoti</p>
+                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                         <div class="p-3 bg-slate-50 rounded border">
+                            <span class="font-bold text-blue-600 block mb-1">Ex. 17</span>
+                            Trova A.V. di $y = \ln(x-3)$.
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded border">
+                            <span class="font-bold text-blue-600 block mb-1">Ex. 18</span>
+                            Trova A.O. di $y = \frac{2x^2}{x+1}$.
+                        </div>
+                    </div>
+
+                    <button onclick="toggleSolution('sol-f-4')" class="mt-2 w-full md:w-auto px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Mostra Svolgimenti (14-18)</button>
+                    
+                    <div id="sol-f-4" class="hidden mt-4 pt-4 border-t border-slate-100 bg-slate-50 p-4 rounded text-sm">
+                        <ul class="space-y-4">
+                            <li>
+                                <strong class="text-blue-700">Ex 14:</strong> $\lim_{x\to 0^+} e^x = 1$. $\lim_{x\to 0^-} (x^2-b) = -b$.
+                                <br>Uguagliando: $-b = 1 \implies b = -1$.
+                            </li>
+                            <li>
+                                <strong class="text-blue-700">Ex 15:</strong> $\lim_{x\to 1} \frac{(x-1)(x+1)}{x-1} = 2$. Il limite esiste finito.
+                                <br>Discontinuità di <strong>III specie (Eliminabile)</strong>.
+                            </li>
+                            <li>
+                                <strong class="text-blue-700">Ex 16:</strong> $\lim_{x\to 2} \frac{1}{0} = \infty$.
+                                <br>Discontinuità di <strong>II specie</strong>.
+                            </li>
+                            <li>
+                                <strong class="text-blue-700">Ex 17:</strong> Dominio $x>3$. $\lim_{x\to 3^+} \ln(x-3) = -\infty$.
+                                <br>Asintoto Verticale: <strong>x = 3</strong>.
+                            </li>
+                            <li>
+                                <strong class="text-blue-700">Ex 18:</strong> Grado Num = Grado Den + 1. C'è obliquo.
+                                <br>$m = \lim \frac{f(x)}{x} = 2$. $q = \lim (f(x)-2x) = \lim \frac{2x^2 - 2x^2 - 2x}{x+1} = -2$.
+                                <br>Asintoto Obliquo: <strong>y = 2x - 2</strong>.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- TAB: PROVA A -->
+        <div id="provaA" class="tab-content hidden fade-in">
+            
+            <!-- A1 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8 border border-slate-200">
+                <div class="bg-indigo-600 px-6 py-4">
+                    <h3 class="text-white font-bold text-lg">Esercizio 1: Calcolo Limiti</h3>
+                    <p class="text-indigo-100 text-sm">Punteggio: /20</p>
+                </div>
+                <div class="p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <span class="font-bold text-indigo-600">a.</span>
+                            <div class="p-3 bg-slate-50 rounded border border-slate-200">$$ \lim_{x\rightarrow-\infty}(4x-x^{3}+5) $$</div>
+                        </div>
+                        <div class="space-y-2">
+                            <span class="font-bold text-indigo-600">b.</span>
+                            <div class="p-3 bg-slate-50 rounded border border-slate-200">$$ \lim_{x\rightarrow1}\frac{x^{2}+4x-5}{x^{2}-1} $$</div>
+                        </div>
+                        <div class="space-y-2">
+                            <span class="font-bold text-indigo-600">c.</span>
+                            <div class="p-3 bg-slate-50 rounded border border-slate-200">$$ \lim_{x\rightarrow0}\frac{e^{x}-1+\sin x}{x} $$</div>
+                        </div>
+                        <div class="space-y-2">
+                            <span class="font-bold text-indigo-600">d.</span>
+                            <div class="p-3 bg-slate-50 rounded border border-slate-200">$$ \lim_{x\rightarrow+\infty}\left(1-\frac{4}{x}\right)^{2x} $$</div>
+                        </div>
+                    </div>
+                    <button onclick="toggleSolution('sol-a1')" class="mt-6 w-full md:w-auto px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition">Mostra Svolgimento</button>
+                </div>
+                
+                <div id="sol-a1" class="hidden bg-slate-50 border-t border-slate-200 p-6 space-y-8">
+                    <!-- Sol a -->
+                    <div>
+                        <h4 class="font-bold text-slate-700 border-b pb-1 mb-2">a. Svolgimento</h4>
+                        <p>Forma indeterminata $+\infty -\infty$. Raccogliamo la potenza massima $x^3$:</p>
+                        $$ \lim_{x\rightarrow-\infty} x^3 \left( \frac{4}{x^2}-1+\frac{5}{x^3} \right) = (-\infty)^3 \cdot (0-1+0) = (-\infty) \cdot (-1) = +\infty $$
+                    </div>
+                    <!-- Sol b -->
+                    <div>
+                        <h4 class="font-bold text-slate-700 border-b pb-1 mb-2">b. Svolgimento</h4>
+                        <p>Forma indeterminata $0/0$. Scomponiamo numeratore (trinomio speciale o Ruffini) e denominatore (differenza di quadrati):</p>
+                        $$ \lim_{x\rightarrow1}\frac{(x-1)(x+5)}{(x-1)(x+1)} = \lim_{x\rightarrow1}\frac{x+5}{x+1} = \frac{1+5}{1+1} = 3 $$
+                        <div class="mt-2 bg-red-50 p-2 rounded text-sm text-red-700"><strong>Nota:</strong> Ricordati di porre la condizione $x \ne 1$ per semplificare.</div>
+                    </div>
+                    <!-- Sol c -->
+                    <div>
+                        <h4 class="font-bold text-slate-700 border-b pb-1 mb-2">c. Svolgimento</h4>
+                        <p>Forma $0/0$. Spezziamo la frazione per usare i limiti notevoli:</p>
+                        $$ \lim_{x\rightarrow0} \left( \frac{e^{x}-1}{x} + \frac{\sin x}{x} \right) $$
+                        <p>Ricordando che $\lim_{x\to0}\frac{e^x-1}{x}=1$ e $\lim_{x\to0}\frac{\sin x}{x}=1$:</p>
+                        $$ = 1 + 1 = 2 $$
+                    </div>
+                    <!-- Sol d -->
+                    <div>
+                        <h4 class="font-bold text-slate-700 border-b pb-1 mb-2">d. Svolgimento</h4>
+                        <p>Forma $1^\infty$. Riconduciamo al limite di Nepero $\lim_{z\to\infty}(1+\frac{1}{z})^z = e$.</p>
+                        <p>Scriviamo come: $\lim_{x\rightarrow+\infty} [1 + (-\frac{4}{x})]^{2x}$. Poniamo $y = -\frac{x}{4} \implies x = -4y$.</p>
+                        <p>Se $x \to +\infty$, allora $y \to -\infty$.</p>
+                        $$ \lim_{y\rightarrow-\infty} \left[ \left(1+\frac{1}{y}\right)^y \right]^{-8} = e^{-8} $$
+                    </div>
+                </div>
+            </div>
+
+            <!-- A2 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8 border border-slate-200">
+                <div class="bg-indigo-600 px-6 py-4">
+                    <h3 class="text-white font-bold text-lg">Esercizio 2: Continuità con parametro</h3>
+                    <p class="text-indigo-100 text-sm">Punteggio: /10</p>
+                </div>
+                <div class="p-6">
+                    <p class="mb-4">Determina per quale valore di $a$ la funzione è continua in tutto $\mathbb{R}$:</p>
+                    $$ y=\begin{cases}ax & \text{se } x < 3 \\ 2^{x}+1 & \text{se } x \ge 3\end{cases} $$
+                    <button onclick="toggleSolution('sol-a2')" class="mt-6 w-full md:w-auto px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition">Mostra Svolgimento</button>
+                </div>
+                <div id="sol-a2" class="hidden bg-slate-50 border-t border-slate-200 p-6">
+                    <p>Le due funzioni componenti sono continue nei loro intervalli. L'unico punto critico è il punto di raccordo $x=3$.</p>
+                    <p>Per la continuità deve valere: $\lim_{x\to 3^-} f(x) = \lim_{x\to 3^+} f(x) = f(3)$.</p>
+                    <ul class="list-disc pl-5 mt-2 space-y-1">
+                        <li>Limite sinistro ($x<3$): $\lim_{x\rightarrow3^{-}} ax = 3a$</li>
+                        <li>Limite destro e valore funzione ($x\ge3$): $\lim_{x\rightarrow3^{+}} (2^x+1) = 2^3+1 = 9$</li>
+                    </ul>
+                    <p class="mt-3">Uguagliamo i risultati:</p>
+                    $$ 3a = 9 \implies a = 3 $$
+                </div>
+            </div>
+
+            <!-- A3 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8 border border-slate-200">
+                <div class="bg-indigo-600 px-6 py-4">
+                    <h3 class="text-white font-bold text-lg">Esercizio 3: Punti di singolarità</h3>
+                    <p class="text-indigo-100 text-sm">Punteggio: /10</p>
+                </div>
+                <div class="p-6">
+                    <p class="mb-4">Individua e classifica i punti di singolarità della funzione:</p>
+                    $$ y=\frac{x}{x^{2}-3x} $$
+                    <button onclick="toggleSolution('sol-a3')" class="mt-6 w-full md:w-auto px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition">Mostra Svolgimento</button>
+                </div>
+                <div id="sol-a3" class="hidden bg-slate-50 border-t border-slate-200 p-6">
+                    <p><strong>1. Dominio:</strong> Denominatore $\ne 0$.</p>
+                    $$ x^2 - 3x \ne 0 \implies x(x-3) \ne 0 \implies x \ne 0 \land x \ne 3 $$
+                    <p>I punti di singolarità sono $x_1=0$ e $x_2=3$.</p>
+                    
+                    <p class="mt-4 font-bold">2. Analisi di $x=0$:</p>
+                    $$ \lim_{x\rightarrow0} \frac{x}{x(x-3)} = \lim_{x\rightarrow0} \frac{1}{x-3} = -\frac{1}{3} $$
+                    <p>Il limite esiste finito, ma la funzione non è definita. <br>$\rightarrow$ <strong>Discontinuità di III specie (Eliminabile)</strong>.</p>
+                    
+                    <p class="mt-4 font-bold">3. Analisi di $x=3$:</p>
+                    $$ \lim_{x\rightarrow3} \frac{1}{x-3} = \infty $$
+                    <p>Il limite è infinito. <br>$\rightarrow$ <strong>Discontinuità di II specie</strong>.</p>
+                </div>
+            </div>
+
+             <!-- A4 -->
+             <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8 border border-slate-200">
+                <div class="bg-indigo-600 px-6 py-4">
+                    <h3 class="text-white font-bold text-lg">Esercizio 4: Asintoti</h3>
+                    <p class="text-indigo-100 text-sm">Punteggio: /20</p>
+                </div>
+                <div class="p-6">
+                    <p class="mb-4">Determina gli asintoti della funzione:</p>
+                    $$ f(x)=\frac{x^{3}-9x}{x^{2}-1} $$
+                    <button onclick="toggleSolution('sol-a4')" class="mt-6 w-full md:w-auto px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition">Mostra Svolgimento</button>
+                </div>
+                <div id="sol-a4" class="hidden bg-slate-50 border-t border-slate-200 p-6">
+                    <p>Dominio: $x \ne \pm 1$.</p>
+                    
+                    <p class="mt-2 font-bold text-blue-700">Asintoti Verticali:</p>
+                    <p>Verifichiamo i limiti nei punti esclusi dal dominio:</p>
+                    $$ \lim_{x\rightarrow 1} \frac{x(x^2-9)}{(x-1)(x+1)} = \frac{-8}{0} = \infty \implies x=1 \text{ è A.V.} $$
+                    $$ \lim_{x\rightarrow -1} \frac{x(x^2-9)}{(x-1)(x+1)} = \frac{8}{0} = \infty \implies x=-1 \text{ è A.V.} $$
+
+                    <p class="mt-4 font-bold text-blue-700">Asintoti Orizzontali/Obliqui:</p>
+                    <p>Per $x \to \infty$, il grado del numeratore (3) è maggiore del denominatore (2) di 1, quindi c'è asintoto obliquo $y=mx+q$.</p>
+                    $$ m = \lim_{x\to\infty} \frac{f(x)}{x} = \lim_{x\to\infty} \frac{x^3-9x}{x^3-x} = 1 $$
+                    $$ q = \lim_{x\to\infty} [f(x) - x] = \lim_{x\to\infty} \left( \frac{x^3-9x}{x^2-1} - x \right) = \lim_{x\to\infty} \frac{x^3-9x -x^3+x}{x^2-1} = \lim_{x\to\infty} \frac{-8x}{x^2-1} = 0 $$
+                    <p>Asintoto obliquo: <strong>$y=x$</strong>.</p>
+                </div>
+            </div>
+
+            <!-- A5 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8 border border-slate-200">
+                <div class="bg-indigo-600 px-6 py-4">
+                    <h3 class="text-white font-bold text-lg">Esercizio 5: Parametri</h3>
+                    <p class="text-indigo-100 text-sm">Punteggio: /30</p>
+                </div>
+                <div class="p-6">
+                    <p class="mb-4">Quali valori devono assumere $a$ e $b$ affinché:</p>
+                    $$ \lim_{x\rightarrow+\infty}\frac{6x-b}{ax^{2}+(a-b)x}=-3 $$
+                    <button onclick="toggleSolution('sol-a5')" class="mt-6 w-full md:w-auto px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition">Mostra Svolgimento</button>
+                </div>
+                <div id="sol-a5" class="hidden bg-slate-50 border-t border-slate-200 p-6">
+                    <p>Il limite è un numero finito diverso da zero ($l=-3$).</p>
+                    <p>In una funzione razionale fratta, questo accade solo se Numeratore e Denominatore hanno lo <strong>stesso grado</strong>.</p>
+                    <ul class="list-disc pl-5 mt-2">
+                        <li>Grado Numeratore = 1.</li>
+                        <li>Il Denominatore ha termine $ax^2$. Affinché il grado sia 1, il termine di secondo grado deve sparire.</li>
+                    </ul>
+                    $$ a = 0 $$
+                    <p>Sostituendo $a=0$, il limite diventa:</p>
+                    $$ \lim_{x\rightarrow+\infty}\frac{6x-b}{-bx} = \frac{6}{-b} $$
+                    <p>Uguagliamo al risultato dato:</p>
+                    $$ \frac{6}{-b} = -3 \implies 6 = 3b \implies b = 2 $$
+                    <p class="mt-2 font-bold">Soluzione: $a=0, b=2$.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- TAB: PROVA B -->
+        <div id="provaB" class="tab-content hidden fade-in">
+            
+            <!-- B1 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8 border border-slate-200">
+                <div class="bg-emerald-600 px-6 py-4">
+                    <h3 class="text-white font-bold text-lg">Esercizio 1: Realtà e Modelli (Rally)</h3>
+                    <p class="text-emerald-100 text-sm">Punteggio: /25</p>
+                </div>
+                <div class="p-6">
+                    <p class="mb-4">Una macchina percorre un tratto con traiettoria $y=\frac{3-x^{2}}{x+1}$ con $x<-\sqrt{3}$.</p>
+                    <ol class="list-decimal pl-5 space-y-2">
+                        <li>Disegna il grafico approssimativo (considerando il dominio naturale).</li>
+                        <li>Studia la continuità nel dominio naturale.</li>
+                        <li>Determina eventuali asintoti.</li>
+                    </ol>
+                    <button onclick="toggleSolution('sol-b1')" class="mt-6 w-full md:w-auto px-6 py-2 bg-emerald-600 text-white rounded hover:bg-emerald-700 transition">Mostra Svolgimento</button>
+                </div>
+                <div id="sol-b1" class="hidden bg-slate-50 border-t border-slate-200 p-6">
+                    <p><strong>1. Studio funzione:</strong></p>
+                    <ul class="list-disc pl-5 mb-3">
+                        <li><strong>Dominio Naturale:</strong> $x+1 \ne 0 \implies x \ne -1$.</li>
+                        <li><strong>Segno:</strong> $N: 3-x^2 > 0 \implies -\sqrt{3} < x < \sqrt{3}$. $D: x > -1$.</li>
+                        <li><strong>Limiti (Asintoti):</strong>
+                            <br> $\lim_{x\to -1} f(x) = \infty \implies x=-1$ (A.V.)
+                            <br> $\lim_{x\to \pm\infty} \frac{-x^2}{x} = \infty$. $m=-1, q=1 \implies y=-x+1$ (A. Obliquo).
+                        </li>
+                    </ul>
+                    <p><strong>2. Continuità:</strong></p>
+                    <p>La funzione è razionale fratta, quindi è continua in tutto il suo dominio $D = \mathbb{R}-\{-1\}$. In $x=-1$ ha una discontinuità di II specie.</p>
+                </div>
+            </div>
+
+            <!-- B2 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8 border border-slate-200">
+                <div class="bg-emerald-600 px-6 py-4">
+                    <h3 class="text-white font-bold text-lg">Esercizio 2: Calcolo Limiti</h3>
+                    <p class="text-emerald-100 text-sm">Punteggio: /20</p>
+                </div>
+                <div class="p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <span class="font-bold text-emerald-600">a.</span>
+                            <div class="p-3 bg-slate-50 rounded border border-slate-200">$$ \lim_{x\rightarrow2^{-}}\frac{x}{x-2} $$</div>
+                        </div>
+                        <div class="space-y-2">
+                            <span class="font-bold text-emerald-600">b.</span>
+                            <div class="p-3 bg-slate-50 rounded border border-slate-200">$$ \lim_{x\rightarrow-3^{+}}\frac{x^{2}+3x}{x^{2}+6x+9} $$</div>
+                        </div>
+                        <div class="space-y-2">
+                            <span class="font-bold text-emerald-600">c.</span>
+                            <div class="p-3 bg-slate-50 rounded border border-slate-200">$$ \lim_{x\rightarrow+\infty}(\sqrt{x+1}-\sqrt{x}) $$</div>
+                        </div>
+                        <div class="space-y-2">
+                            <span class="font-bold text-emerald-600">d.</span>
+                            <div class="p-3 bg-slate-50 rounded border border-slate-200">$$ \lim_{x\rightarrow0}\frac{\cos x-1}{\sin^{2}x} $$</div>
+                        </div>
+                    </div>
+                    <button onclick="toggleSolution('sol-b2')" class="mt-6 w-full md:w-auto px-6 py-2 bg-emerald-600 text-white rounded hover:bg-emerald-700 transition">Mostra Svolgimento</button>
+                </div>
+                
+                <div id="sol-b2" class="hidden bg-slate-50 border-t border-slate-200 p-6 space-y-8">
+                     <!-- Sol a -->
+                     <div>
+                        <h4 class="font-bold text-slate-700 border-b pb-1 mb-2">a. Svolgimento</h4>
+                        <p>Il numeratore tende a 2. Il denominatore tende a $2^- - 2 = 0^-$.</p>
+                        $$ \frac{2}{0^-} = -\infty $$
+                    </div>
+                    <!-- Sol b -->
+                    <div>
+                        <h4 class="font-bold text-slate-700 border-b pb-1 mb-2">b. Svolgimento</h4>
+                        <p>Forma $0/0$. Scomponiamo:</p>
+                        $$ \lim_{x\rightarrow-3^{+}}\frac{x(x+3)}{(x+3)^2} = \lim_{x\rightarrow-3^{+}}\frac{x}{x+3} $$
+                        <p>Sostituendo: $\frac{-3}{0^+} = -\infty$.</p>
+                    </div>
+                    <!-- Sol c -->
+                    <div>
+                        <h4 class="font-bold text-slate-700 border-b pb-1 mb-2">c. Svolgimento</h4>
+                        <p>Forma $+\infty -\infty$. Razionalizziamo moltiplicando per la somma:</p>
+                        $$ \lim \frac{(\sqrt{x+1}-\sqrt{x})(\sqrt{x+1}+\sqrt{x})}{\sqrt{x+1}+\sqrt{x}} = \lim \frac{x+1-x}{\sqrt{x+1}+\sqrt{x}} = \lim \frac{1}{\infty} = 0 $$
+                    </div>
+                    <!-- Sol d -->
+                    <div>
+                        <h4 class="font-bold text-slate-700 border-b pb-1 mb-2">d. Svolgimento</h4>
+                        <p>Forma $0/0$. Moltiplichiamo e dividiamo per $x^2$ oppure usiamo limiti notevoli:</p>
+                        $$ \lim_{x\rightarrow0} \frac{-(1-\cos x)}{x^2} \cdot \frac{x^2}{\sin^2 x} = -\frac{1}{2} \cdot 1^2 = -\frac{1}{2} $$
+                    </div>
+                </div>
+            </div>
+
+            <!-- B3 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8 border border-slate-200">
+                <div class="bg-emerald-600 px-6 py-4">
+                    <h3 class="text-white font-bold text-lg">Esercizio 3: Grafico Probabile</h3>
+                    <p class="text-emerald-100 text-sm">Punteggio: /20</p>
+                </div>
+                <div class="p-6">
+                    <p class="mb-4">Disegna il grafico probabile di:</p>
+                    $$ f(x)=\frac{2x^{3}}{x^{2}-9} $$
+                    <button onclick="toggleSolution('sol-b3')" class="mt-6 w-full md:w-auto px-6 py-2 bg-emerald-600 text-white rounded hover:bg-emerald-700 transition">Mostra Svolgimento</button>
+                </div>
+                <div id="sol-b3" class="hidden bg-slate-50 border-t border-slate-200 p-6">
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong>Dominio:</strong> $x \ne \pm 3$.</li>
+                        <li><strong>Simmetrie:</strong> $f(-x) = -f(x)$, funzione DISPARI (simmetrica rispetto all'origine).</li>
+                        <li><strong>Segno:</strong> Positiva per $-3 < x < 0 \lor x > 3$.</li>
+                        <li><strong>Asintoti Verticali:</strong> $x=-3$ e $x=3$.</li>
+                        <li><strong>Asintoto Obliquo:</strong>
+                            <br> $m = \lim \frac{f(x)}{x} = 2$.
+                            <br> $q = \lim (f(x)-2x) = \lim \frac{2x^3 - 2x(x^2-9)}{x^2-9} = \lim \frac{18x}{x^2-9} = 0$.
+                            <br> Eq: $y=2x$.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- B4 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8 border border-slate-200">
+                <div class="bg-emerald-600 px-6 py-4">
+                    <h3 class="text-white font-bold text-lg">Esercizio 4: Parametri dal Grafico</h3>
+                    <p class="text-emerald-100 text-sm">Punteggio: /30</p>
+                </div>
+                <div class="p-6">
+                    <p class="mb-4">Dato il grafico (non mostrato, ma dedotto), determina $a$ e $b$ per la funzione:</p>
+                    $$ y=\frac{x^{3}+ax}{x^{2}+b} $$
+                    <p class="text-sm text-slate-600">Dati dal grafico: Dominio $x \ne \pm 2$. Passaggio per $(-1; 2)$.</p>
+                    <button onclick="toggleSolution('sol-b4')" class="mt-6 w-full md:w-auto px-6 py-2 bg-emerald-600 text-white rounded hover:bg-emerald-700 transition">Mostra Svolgimento</button>
+                </div>
+                <div id="sol-b4" class="hidden bg-slate-50 border-t border-slate-200 p-6">
+                    <p><strong>1. Dal Dominio:</strong></p>
+                    <p>Il grafico ha asintoti verticali in $x=\pm 2$, quindi il denominatore si annulla per $x^2=4$.</p>
+                    $$ x^2+b = 0 \implies 4+b=0 \implies b=-4 $$
+                    
+                    <p><strong>2. Dal Passaggio per Punto:</strong></p>
+                    <p>Passa per $P(-1; 2)$. Sostituiamo $x=-1, y=2$ con $b=-4$:</p>
+                    $$ 2 = \frac{(-1)^3 + a(-1)}{(-1)^2 - 4} $$
+                    $$ 2 = \frac{-1-a}{1-4} \implies 2 = \frac{-1-a}{-3} $$
+                    $$ -6 = -1-a \implies a = 5 $$
+                    <p class="font-bold mt-2">Soluzione: $a=5, b=-4$.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-300 py-6 mt-auto">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <p>&copy; 2024 Preparazione Verifica Matematica</p>
+            <p class="text-xs mt-2 text-slate-500">I contenuti degli esercizi Prova A e B sono tratti dai materiali forniti.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Tabs and Toggles -->
+    <script>
+        function switchTab(tabId) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+                content.classList.remove('block');
+            });
+            
+            // Show selected tab
+            const selectedTab = document.getElementById(tabId);
+            selectedTab.classList.remove('hidden');
+            selectedTab.classList.add('block');
+            
+            // Update button styles
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active', 'border-b-3', 'border-blue-500', 'text-blue-600', 'font-semibold');
+                btn.classList.add('text-slate-500');
+            });
+            
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.add('active', 'text-blue-600');
+            activeBtn.classList.remove('text-slate-500');
+        }
+
+        function toggleSolution(solId) {
+            const sol = document.getElementById(solId);
+            if (sol.classList.contains('hidden')) {
+                sol.classList.remove('hidden');
+                // Trigger animation
+                sol.classList.add('fade-in');
+            } else {
+                sol.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
